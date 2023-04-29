@@ -59,24 +59,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/logo.jpg
-    - assets/barber/barber1.jpg
-    - assets/barber/barber2.jpeg
-    - assets/barber/barber3.jpeg
-    - assets/hair/buzzcut.jpg
-    - assets/hair/comb_over.jpg
-    - assets/hair/comma_hair.jpg
-    - assets/hair/fluffy.jpg
-    - assets/hair/french_crop.jpg
-    - assets/hair/mullet.jpg
-    - assets/hair/two_blocks.jpeg
-    - assets/hair/undercuts.jpeg
-    - assets/shop/hair_gel.jpg
-    - assets/shop/hair_oil.jpeg
-    - assets/shop/pomade.jpg
-    - assets/shop/powder.png
-    - assets/shop/serum.jpg
-    - assets/shop/spray.png
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
