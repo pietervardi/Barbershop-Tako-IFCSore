@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:barbershop_app/utils/colors.dart';
-import 'package:barbershop_app/screens/profile_screen.dart';
-import 'package:barbershop_app/screens/notification_screen.dart';
+import 'package:barbershop_app/utils/appbar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -74,80 +73,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: AppBar(
-        backgroundColor: appBar,
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        title: const Text(
-          'BARBERSHOP',
-          style: TextStyle(
-            fontStyle: FontStyle.italic
-          ),
-        ),
-        actions: [
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const NotificationScreen(),
-                  ),
-                ),
-                child: const Icon(
-                  Icons.notifications,
-                  size: 30,
-                ),
-              ),
-              Positioned(
-                top: 10,
-                right: 0,
-                child: Container(
-                  width: 18,
-                  height: 18,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.yellow,
-                  ),
-                  child: const Text(
-                    '4',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: text,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
-          GestureDetector(
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const ProfileScreen(),
-              ),
-            ),
-            child: const Padding(
-              padding: EdgeInsets.only(left: 10, right: 20),
-              child: CircleAvatar(
-                backgroundColor: whiteText,
-                child: Icon(
-                  Icons.person,
-                  color: text,
-                  size: 30,
-                ),
-              ),
-            ),
-          )
-        ],
-      ),
+      appBar: buildAppBar(context),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
             children: [
-              const SizedBox(height: 15,),
-
+              const SizedBox(
+                height: 15,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -162,7 +95,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: 115,
                       height: 37,
                       decoration: BoxDecoration(
-                        color: hair ? buttonFilterStroke.withOpacity(0.5) : buttonFilterStroke.withOpacity(0),
+                        color: hair
+                            ? buttonFilterStroke.withOpacity(0.5)
+                            : buttonFilterStroke.withOpacity(0),
                         borderRadius: BorderRadius.circular(10),
                         shape: BoxShape.rectangle,
                         border: Border.all(color: buttonFilterStroke),
@@ -178,7 +113,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(width: 40,),
+                  const SizedBox(
+                    width: 40,
+                  ),
                   GestureDetector(
                     onTap: () {
                       setState(() {
@@ -190,7 +127,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: 115,
                       height: 37,
                       decoration: BoxDecoration(
-                        color: barber ? buttonFilterStroke.withOpacity(0.5) : buttonFilterStroke.withOpacity(0),
+                        color: barber
+                            ? buttonFilterStroke.withOpacity(0.5)
+                            : buttonFilterStroke.withOpacity(0),
                         borderRadius: BorderRadius.circular(10),
                         shape: BoxShape.rectangle,
                         border: Border.all(color: buttonFilterStroke),
@@ -208,9 +147,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-
-              const SizedBox(height: 26,),
-
+              const SizedBox(
+                height: 26,
+              ),
               if (hair)
                 SizedBox(
                   width: 400,
@@ -221,17 +160,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisCount: 2,
                       crossAxisSpacing: 20,
                       mainAxisSpacing: 20,
-                      padding: const EdgeInsets.symmetric(horizontal: 20,),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                      ),
                       children: haircuts
-                        .map((haircut) => HaircutCard(
-                          name: haircut['name']!,
-                          image: haircut['image']!,
-                        ))
-                        .toList(),
+                          .map((haircut) => HaircutCard(
+                                name: haircut['name']!,
+                                image: haircut['image']!,
+                              ))
+                          .toList(),
                     ),
                   ),
                 ),
-
               if (barber)
                 Column(
                   children: [
@@ -261,11 +201,8 @@ class HaircutCard extends StatelessWidget {
   final String name;
   final String image;
 
-  const HaircutCard({
-    Key? key, 
-    required this.name, 
-    required this.image
-  }) : super(key: key);
+  const HaircutCard({Key? key, required this.name, required this.image})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -340,23 +277,22 @@ class BarberCard extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              width: 130,
-              height: 130,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                  color: whiteText,
-                  width: 2,
+                width: 130,
+                height: 130,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: whiteText,
+                    width: 2,
+                  ),
                 ),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  image,
-                  fit: BoxFit.cover,
-                ),
-              )
-            ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    image,
+                    fit: BoxFit.cover,
+                  ),
+                )),
             const SizedBox(width: 23),
             Expanded(
               child: Column(

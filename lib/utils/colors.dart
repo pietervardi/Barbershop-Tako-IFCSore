@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
 const whiteText = Color(0xFFFFFFFF);
+const gray = Color(0xFFD9D9D9);
 const text = Color(0xFF000000);
 const appBar = Color(0xFF865439);
 const bottomBar = Color(0xFFB05B3B);
 const backgroundColor = Color(0xFFD79771);
+
+const yellow = Colors.yellow;
+const green = Colors.green;
+const lightGreen = Color(0xFFC7E8CA);
 
 // Login & Register
 const signText = Color(0xFF876445);
