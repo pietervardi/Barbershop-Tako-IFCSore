@@ -17,6 +17,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: const Text('PROFILE'),
         centerTitle: true,
         backgroundColor: appBar,
+        elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Column(
