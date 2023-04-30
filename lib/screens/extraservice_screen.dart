@@ -18,6 +18,7 @@ class _ExtraServiceScreenState extends State<ExtraServiceScreen> {
       appBar: AppBar(
         backgroundColor: appBar,
         automaticallyImplyLeading: false,
+        elevation: 0,
         title: const Text(
           'BARBERSHOP',
           style: TextStyle(

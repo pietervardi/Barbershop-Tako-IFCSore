@@ -18,6 +18,7 @@ class _MiniShopScreenState extends State<MiniShopScreen> {
       appBar: AppBar(
         backgroundColor: appBar,
         automaticallyImplyLeading: false,
+        elevation: 0,
         title: const Text(
           'BARBERSHOP',
           style: TextStyle(
