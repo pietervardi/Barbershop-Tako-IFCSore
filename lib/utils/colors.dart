@@ -9,7 +9,9 @@ const backgroundColor = Color(0xFFD79771);
 
 const yellow = Colors.yellow;
 const green = Colors.green;
+const red = Colors.red;
 const lightGreen = Color(0xFFC7E8CA);
+const lightRed = Color(0xFFFFDEDE);
 
 // Login & Register
 const signText = Color(0xFF876445);

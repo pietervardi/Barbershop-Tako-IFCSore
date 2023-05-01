@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:barbershop_app/utils/colors.dart';
 import 'package:barbershop_app/responsive/screen_layout.dart';
 import 'package:barbershop_app/utils/message.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -24,12 +25,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: Column(children: [
               Image.asset(
                 'assets/logo.png',
-                width: 300,
+                width: 251,
+                height: 274,
               ),
-              const Text(
+              Text(
                 'REGISTER',
-                style: TextStyle(
-                  fontSize: 36, 
+                style: GoogleFonts.roboto(
+                  fontSize: 40, 
                   color: signText, 
                   fontWeight: FontWeight.bold
                 ),
@@ -133,7 +135,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     );
                     ScaffoldMessenger.of(context).showSnackBar(
-                      buildSnackBarSuccess()
+                      buildSnackBarSuccess('Register')
                     );
                   },
                   child: const Text(

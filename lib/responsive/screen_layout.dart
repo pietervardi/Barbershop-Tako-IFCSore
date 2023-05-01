@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:barbershop_app/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:barbershop_app/utils/global_variable.dart';
+import 'package:barbershop_app/utils/appbar.dart';
 
 class ScreenLayout extends StatefulWidget {
   const ScreenLayout({Key? key}) : super(key: key);
@@ -39,6 +40,7 @@ class _ScreenLayoutState extends State<ScreenLayout> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: buildAppBar(context),
       body: PageView(
         controller: pageController,
         onPageChanged: onPageChanged,

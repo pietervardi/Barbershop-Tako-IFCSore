@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:barbershop_app/utils/colors.dart';
-import 'package:barbershop_app/utils/appbar.dart';
 
 class ReservationScreen extends StatefulWidget {
   const ReservationScreen({Key? key}) : super(key: key);
@@ -14,7 +13,6 @@ class _ReservationScreenState extends State<ReservationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: buildAppBar(context),
       body: SingleChildScrollView(
         child: Column(
           children: [

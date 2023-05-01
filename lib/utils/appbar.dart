@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:barbershop_app/utils/colors.dart';
 import 'package:barbershop_app/screens/profile_screen.dart';
 import 'package:barbershop_app/screens/notification_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 AppBar buildAppBar(BuildContext context) {
   return AppBar(
     backgroundColor: appBar,
     automaticallyImplyLeading: false,
     elevation: 0,
-    title: const Text(
+    title: Text(
       'BARBERSHOP',
-      style: TextStyle(
-        fontStyle: FontStyle.italic
+      style: GoogleFonts.dancingScript(
+        fontSize: 18
       ),
     ),
     actions: [

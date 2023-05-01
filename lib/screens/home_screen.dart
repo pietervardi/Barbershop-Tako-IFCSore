@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:barbershop_app/utils/colors.dart';
-import 'package:barbershop_app/utils/appbar.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -73,7 +73,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: buildAppBar(context),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -102,11 +101,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         shape: BoxShape.rectangle,
                         border: Border.all(color: buttonFilterStroke),
                       ),
-                      child: const Center(
+                      child: Center(
                         child: Text(
                           'Hair',
-                          style: TextStyle(
+                          style: GoogleFonts.roboto(
                             color: buttonFilterText,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -134,11 +134,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         shape: BoxShape.rectangle,
                         border: Border.all(color: buttonFilterStroke),
                       ),
-                      child: const Center(
+                      child: Center(
                         child: Text(
                           'Barber',
-                          style: TextStyle(
+                          style: GoogleFonts.roboto(
                             color: buttonFilterText,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -164,11 +165,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         horizontal: 20,
                       ),
                       children: haircuts
-                          .map((haircut) => HaircutCard(
-                                name: haircut['name']!,
-                                image: haircut['image']!,
-                              ))
-                          .toList(),
+                        .map((haircut) => HaircutCard(
+                          name: haircut['name']!,
+                          image: haircut['image']!,
+                        ))
+                        .toList(),
                     ),
                   ),
                 ),
@@ -233,7 +234,7 @@ class HaircutCard extends StatelessWidget {
               child: Center(
                 child: Text(
                   name,
-                  style: const TextStyle(
+                  style: GoogleFonts.roboto(
                     fontSize: 10,
                     color: whiteText,
                     fontWeight: FontWeight.bold,
@@ -300,15 +301,13 @@ class BarberCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    // crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
                         name,
-                        style: const TextStyle(
-                          fontStyle: FontStyle.italic,
+                        style: GoogleFonts.pacifico(
                           fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                          fontFamily: 'Arial',
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       const SizedBox(width: 3),
@@ -324,7 +323,7 @@ class BarberCard extends StatelessWidget {
                   Flexible(
                     child: Text(
                       bio,
-                      maxLines: 2,
+                      maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         fontSize: 13,

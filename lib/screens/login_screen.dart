@@ -3,6 +3,7 @@ import 'package:barbershop_app/utils/colors.dart';
 import 'package:barbershop_app/responsive/screen_layout.dart';
 import 'package:barbershop_app/screens/register_screen.dart';
 import 'package:barbershop_app/utils/message.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -27,12 +28,16 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(children: [
               Image.asset(
                 'assets/logo.png',
-                width: 300,
+                width: 251,
+                height: 274,
               ),
-              const Text(
+              Text(
                 'LOG IN',
-                style: TextStyle(
-                    fontSize: 36, color: signText, fontWeight: FontWeight.bold),
+                style: GoogleFonts.roboto(
+                  fontSize: 40, 
+                  color: signText, 
+                  fontWeight: FontWeight.bold
+                ),
               ),
               Container(
                 padding: const EdgeInsets.only(top: 20),
@@ -137,11 +142,11 @@ class _LoginScreenState extends State<LoginScreen> {
                               builder: (context) => const ScreenLayout(),
                             ),
                           );
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            buildSnackBarSuccess('Login')
+                          );
                         }
                       });
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        buildSnackBarSuccess()
-                      );
                     },
                     child: const Text(
                       'LOGIN',
