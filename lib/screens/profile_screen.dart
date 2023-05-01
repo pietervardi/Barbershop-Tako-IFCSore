@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:barbershop_app/utils/colors.dart';
 import 'EditProfile.dart';
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+class ProfileScreen extends StatelessWidget {
+  final String? email;
+  final String? username;
 
-  @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
+  const ProfileScreen({Key?key, required this.email,required this.username}):super(key:key);
 
-class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,11 +32,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             width: 400,
             child: Column(children: [
               Text(
-                'Pieter Vardi',
+                username??"Pieter Vardi",
                 style: TextStyle(fontSize: 40),
               ),
               Text(
-                'aoshoka@pieter.vardi',
+                email??"Pieter@vardi.aoshoka",
                 style: TextStyle(fontSize: 20),
               ),
               Padding(padding: EdgeInsets.all(10)),
@@ -54,8 +52,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         MaterialPageRoute(builder: (context) => editProfile());
                     Navigator.push(context, route);
                   },
-                  child: const Text(
-                    'Edit Profile',
+                  child: Text(
+                     'Edit Profile',
                     style: TextStyle(fontSize: 15),
                   )),
               Padding(padding: EdgeInsets.all(50)),

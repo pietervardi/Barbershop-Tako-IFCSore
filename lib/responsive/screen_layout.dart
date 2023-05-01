@@ -12,7 +12,7 @@ class ScreenLayout extends StatefulWidget {
 
 class _ScreenLayoutState extends State<ScreenLayout> {
   int _page = 0;
-  late PageController pageController;
+  late PageController  pageController;
 
   @override
   void initState() {

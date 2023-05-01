@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:barbershop_app/utils/colors.dart';
+import 'profile_screen.dart';
 
 
 class editProfile extends StatefulWidget {
@@ -10,6 +11,9 @@ class editProfile extends StatefulWidget {
 }
 
 class _editProfileState extends State<editProfile> {
+  TextEditingController textFieldController1 = TextEditingController();
+  TextEditingController textFieldController2 = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,14 +37,14 @@ class _editProfileState extends State<editProfile> {
             width: 300,
             child: Column(children: [
               TextFormField(
+                controller: textFieldController1,
                 decoration: InputDecoration(icon: Icon(Icons.person) ),
-                initialValue: 'Pieter Vardi',
                 style: const TextStyle(fontSize: 20),
                 
               ),
               TextFormField(
+                controller: textFieldController2,
                 decoration: InputDecoration(icon: Icon(Icons.email) ),
-                initialValue: 'aoshoka@pieter.vardi',
                 style: TextStyle(fontSize: 20),
               ),
               const Padding(padding: EdgeInsets.all(10)),
@@ -52,7 +56,9 @@ class _editProfileState extends State<editProfile> {
                       padding:
                           const EdgeInsets.symmetric(horizontal: 85, vertical: 20)),
                   onPressed: () {
-                    Navigator.pop(context);
+                    Route route =
+                        MaterialPageRoute(builder: (context) => ProfileScreen(email:textFieldController1.text,username:textFieldController2.text));
+                    Navigator.push(context, route);
                   },
                   child: const Text(
                     'Confirm Changes',
