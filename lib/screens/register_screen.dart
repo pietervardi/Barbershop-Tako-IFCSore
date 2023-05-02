@@ -21,7 +21,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: SingleChildScrollView(
         child: Center(
           child: SizedBox(
-            width: 400,
+            width: 340,
             child: Column(children: [
               Image.asset(
                 'assets/logo.png',
@@ -124,8 +124,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     backgroundColor: primaryButton,
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 120, 
-                      vertical: 20
+                      horizontal: 80, 
+                      vertical: 15
                     )
                   ),
                   onPressed: () {
@@ -140,7 +140,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   },
                   child: const Text(
                     'REGISTER',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 18),
                   )
                 ),
               ),
@@ -153,8 +153,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     backgroundColor: secondaryButton,
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 130, 
-                      vertical: 20
+                      horizontal: 85, 
+                      vertical: 15
                     )
                   ),
                   onPressed: () {
@@ -162,7 +162,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   },
                   child: const Text(
                     'CANCEL',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 18),
                   )),
               ),
             ]),

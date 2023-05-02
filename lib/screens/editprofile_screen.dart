@@ -3,7 +3,6 @@ import 'package:barbershop_app/utils/colors.dart';
 import 'package:barbershop_app/screens/profile_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({Key? key}) : super(key: key);
 
@@ -21,6 +20,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       backgroundColor: backgroundColor,
       appBar: AppBar(
         title: const Text('EDIT PROFILE'),
+        elevation: 0,
         centerTitle: true,
         backgroundColor: appBar,
       ),
@@ -28,9 +28,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         child: Column(children: [
           const Padding(padding: EdgeInsets.all(10)),
           const CircleAvatar(
-            radius: 100,
-            backgroundImage: NetworkImage(
-              'https://cdn.sharechat.com/16ed0584-5fb7-494a-a051-28312a36b581-807fabc4-296c-45e2-8eba-b97f4d716d30.jpeg',
+            radius: 80,
+            backgroundColor: gray,
+            child: Icon(
+              Icons.person,
+              color: text,
+              size: 80,
             ),
           ),
           const Padding(padding: EdgeInsets.all(10)),
@@ -40,10 +43,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               TextFormField(
                 controller: textFieldController1,
                 decoration: const InputDecoration(
-                  icon: Icon(Icons.person)
+                  icon: Icon(
+                    Icons.person
+                  ),
+                  hintText: 'Victor Chandra',
                 ),
                 style: const TextStyle(
-                  fontSize: 20
+                  fontSize: 20,
                 ),
               ),
               TextFormField(
@@ -51,7 +57,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 decoration: const InputDecoration(
                   icon: Icon(
                     Icons.email
-                  ) 
+                  ),
+                  hintText: 'victorchan@gmail.com',
                 ),
                 style: const TextStyle(fontSize: 20),
               ),
@@ -69,11 +76,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ),
                 onPressed: () {
                   Route route = MaterialPageRoute(builder: (context) => ProfileScreen(
-                    email:textFieldController1.text,
-                    username:textFieldController2.text
+                    username:textFieldController1.text,
+                    email:textFieldController2.text,
                     )
                   );
-                  Navigator.push(context, route);
+                  Navigator.pushReplacement(context, route);
                 },
                 child: Text(
                   'Confirm Changes',

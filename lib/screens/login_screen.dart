@@ -24,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SingleChildScrollView(
         child: Center(
           child: SizedBox(
-            width: 400,
+            width: 340,
             child: Column(children: [
               Image.asset(
                 'assets/logo.png',

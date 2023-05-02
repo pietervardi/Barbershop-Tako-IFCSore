@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:barbershop_app/utils/colors.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({super.key});
@@ -45,10 +44,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: AppBar(
-        title: Text(
-          'NOTIFICATION',
-          style: GoogleFonts.eater(fontSize: 30),
-        ),
+        title: const Text('NOTIFICATION'),
         centerTitle: true,
         backgroundColor: appBar,
         elevation: 0,
@@ -57,11 +53,12 @@ class _NotificationScreenState extends State<NotificationScreen> {
         child: Center(
           child: Column(
             children: List.generate(items.length, (index) {
-              return NontificationCard(
-                  judul: items[index]["judul"],
-                  waktu: items[index]["waktu"],
-                  desc1: items[index]["desc1"],
-                  desc2: items[index]["desc2"]);
+              return NotificationCard(
+                judul: items[index]["judul"],
+                waktu: items[index]["waktu"],
+                desc1: items[index]["desc1"],
+                desc2: items[index]["desc2"]
+              );
             }),
           ),
         ),
@@ -70,26 +67,31 @@ class _NotificationScreenState extends State<NotificationScreen> {
   }
 }
 
-class NontificationCard extends StatelessWidget {
+class NotificationCard extends StatelessWidget {
   final String judul;
   final String waktu;
   final String desc1;
   final String desc2;
-  const NontificationCard(
-      {super.key,
-      required this.judul,
-      required this.waktu,
-      required this.desc1,
-      required this.desc2});
+  const NotificationCard({
+    super.key,
+    required this.judul,
+    required this.waktu,
+    required this.desc1,
+    required this.desc2
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
-      margin: EdgeInsets.all(3),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 10
+      ),
       decoration: BoxDecoration(
         color: cardBackground,
-        border: Border.all(width: 1,color: notificationBorder)
+        border: Border.all(
+          width: 1,
+          color: notificationBorder
+        )
       ),
       width: 498,
       height: 100,
@@ -101,12 +103,19 @@ class NontificationCard extends StatelessWidget {
             children: [
               Text(
                 judul,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold
+                ),
               ),
-              Text(waktu, style: TextStyle(fontWeight: FontWeight.bold))
+              Text(
+                waktu, 
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold
+                )
+              )
             ],
           ),
-          Text(""),
+          const Text(""),
           Padding(
             padding: const EdgeInsets.only(left: 5),
             child: Text(desc1),

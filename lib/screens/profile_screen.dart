@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:barbershop_app/utils/colors.dart';
 import 'package:barbershop_app/screens/editprofile_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:barbershop_app/screens/login_screen.dart';
+import 'package:barbershop_app/utils/message.dart';
 
 class ProfileScreen extends StatelessWidget {
   final String? email;
@@ -28,9 +30,12 @@ class ProfileScreen extends StatelessWidget {
           children: [
             const Padding(padding: EdgeInsets.all(10)),
             const CircleAvatar(
-              radius: 100,
-              backgroundImage: NetworkImage(
-                'https://cdn.sharechat.com/16ed0584-5fb7-494a-a051-28312a36b581-807fabc4-296c-45e2-8eba-b97f4d716d30.jpeg',
+              radius: 80,
+              backgroundColor: gray,
+              child: Icon(
+                Icons.person,
+                color: text,
+                size: 80,
               ),
             ),
             const Padding(padding: EdgeInsets.all(10)),
@@ -39,7 +44,7 @@ class ProfileScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    username??"Pieter Vardi",
+                    username??"Victor Chandra",
                     style: GoogleFonts.arapey(
                       fontSize: 30,
                       fontWeight: FontWeight.w600,
@@ -47,7 +52,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    email??"Pieter@vardi.aoshoka",
+                    email??"victorchan@gmail.com",
                     style: GoogleFonts.abhayaLibre(
                       fontSize: 20
                     ),
@@ -67,9 +72,10 @@ class ProfileScreen extends StatelessWidget {
                       )
                     ),
                     onPressed: () {
-                      Route route =
-                        MaterialPageRoute(builder: (context) => const EditProfileScreen());
-                      Navigator.push(context, route);
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (context) => const EditProfileScreen()),
+                      );
                     },
                     child: Text(
                       'Edit Profile',
@@ -89,7 +95,14 @@ class ProfileScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 20)
                     ),
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const LoginScreen(),
+                        ),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        buildSnackBarDanger('Log Out')
+                      );
                     },
                     child: Text(
                       'Log Out',
