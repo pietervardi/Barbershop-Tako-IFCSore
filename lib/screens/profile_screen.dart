@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:barbershop_app/screens/login_screen.dart';
 import 'package:barbershop_app/utils/message.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   final String? email;
   final String? username;
 
@@ -14,6 +14,21 @@ class ProfileScreen extends StatelessWidget {
     required this.email,
     required this.username
   }) : super(key: key);
+
+  @override
+  _ProfileScreenState createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  late String _email;
+  late String _username;
+
+  @override
+  void initState() {
+    super.initState();
+    _email = widget.email ?? "victorchan@gmail.com";
+    _username = widget.username ?? "Victor Chandra";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +59,7 @@ class ProfileScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    username??"Victor Chandra",
+                    _username,
                     style: GoogleFonts.arapey(
                       fontSize: 30,
                       fontWeight: FontWeight.w600,
@@ -52,7 +67,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    email??"victorchan@gmail.com",
+                    _email,
                     style: GoogleFonts.abhayaLibre(
                       fontSize: 20
                     ),
@@ -71,11 +86,17 @@ class ProfileScreen extends StatelessWidget {
                         vertical: 20
                       )
                     ),
-                    onPressed: () {
-                      Navigator.push(
+                    onPressed: () async {
+                      final result = await Navigator.push(
                         context, 
                         MaterialPageRoute(builder: (context) => const EditProfileScreen()),
                       );
+                      if (result != null) {
+                        setState(() {
+                          _username = result['username'];
+                          _email = result['email'];
+                        });
+                      }
                     },
                     child: Text(
                       'Edit Profile',

@@ -1,3 +1,5 @@
+import 'package:barbershop_app/responsive/screen_layout.dart';
+import 'package:barbershop_app/utils/message.dart';
 import 'package:flutter/material.dart';
 import 'package:barbershop_app/utils/colors.dart';
 import 'package:intl/intl.dart';
@@ -100,190 +102,190 @@ class _ReservationScreenState extends State<ReservationScreen> {
               SizedBox(
                 width: 340,
                 child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'Name',
-                        style: TextStyle(
-                          color: reservationText,
-                          fontSize: 20
-                        ),
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Name',
+                      style: TextStyle(
+                        color: reservationText,
+                        fontSize: 20
                       ),
-                      TextFormField(
-                        // controller: textFieldController1,
-                        decoration: InputDecoration(
-                          hintText: 'Enter name',
-                          filled: true,
-                          fillColor: inputField,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          )
-                        ),
-                        style: const TextStyle(
-                          fontSize: 15
-                        ),
+                    ),
+                    TextFormField(
+                      // controller: textFieldController1,
+                      decoration: InputDecoration(
+                        hintText: 'Enter name',
+                        filled: true,
+                        fillColor: inputField,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        )
                       ),
-                      const Padding(padding: EdgeInsets.all(10)),
-                      const Text(
-                        'Hair Models',
-                        style: TextStyle(
-                          color: reservationText,
-                          fontSize: 20
-                        ),
+                      style: const TextStyle(
+                        fontSize: 15
                       ),
-                      DropdownButtonFormField(
-                        dropdownColor: inputField,
-                        decoration: InputDecoration(
-                          hintText: 'Choose Hair Model',
-                          filled: true,
-                          fillColor: inputField,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          )
-                        ),
-                        value: gayarambut,
-                        items: haircuts
-                          .map((e) => DropdownMenuItem(
-                            value: e["values"], child: Text(e["name"]!)))
-                          .toList(),
-                        onChanged: (value) {
-                          setState(() {
-                            gayarambut = value;
-                          });
-                        }),
-                      const Padding(padding: EdgeInsets.all(10)),
-                      if (gayarambut == 'custom')
-                        Column(
-                          children: [
-                            const Align(
-                              alignment: Alignment.bottomLeft,
-                              child: Text(
-                                'Custom Hair Models',
-                                style: TextStyle(
-                                  color: reservationText,
-                                  fontSize: 20
-                                ),
+                    ),
+                    const Padding(padding: EdgeInsets.all(10)),
+                    const Text(
+                      'Hair Models',
+                      style: TextStyle(
+                        color: reservationText,
+                        fontSize: 20
+                      ),
+                    ),
+                    DropdownButtonFormField(
+                      dropdownColor: inputField,
+                      decoration: InputDecoration(
+                        hintText: 'Choose Hair Model',
+                        filled: true,
+                        fillColor: inputField,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        )
+                      ),
+                      value: gayarambut,
+                      items: haircuts
+                        .map((e) => DropdownMenuItem(
+                          value: e["values"], child: Text(e["name"]!)))
+                        .toList(),
+                      onChanged: (value) {
+                        setState(() {
+                          gayarambut = value;
+                        });
+                      }),
+                    const Padding(padding: EdgeInsets.all(10)),
+                    if (gayarambut == 'custom')
+                      Column(
+                        children: [
+                          const Align(
+                            alignment: Alignment.bottomLeft,
+                            child: Text(
+                              'Custom Hair Models',
+                              style: TextStyle(
+                                color: reservationText,
+                                fontSize: 20
                               ),
                             ),
-                            TextFormField(
-                              // controller: textFieldController1,
-                              maxLines: 3,
-                              decoration: InputDecoration(
-                                hintText: 'Fill your preferences',
-                                filled: true,
-                                fillColor: inputField,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                )
-                              ),
-                              style: const TextStyle(
-                                fontSize: 15
-                              ),
+                          ),
+                          TextFormField(
+                            // controller: textFieldController1,
+                            maxLines: 3,
+                            decoration: InputDecoration(
+                              hintText: 'Fill your preferences',
+                              filled: true,
+                              fillColor: inputField,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8.0),
+                              )
                             ),
-                            const Padding(padding: EdgeInsets.all(10)),
-                          ],
-                        ),
-                      const Text(
-                        'Barbers',
-                        style: TextStyle(
-                          color: reservationText,
-                          fontSize: 20
-                        ),
-                      ),
-                      DropdownButtonFormField(
-                        dropdownColor: inputField,
-                        decoration: InputDecoration(
-                          hintText: 'Choose Barber',
-                          filled: true,
-                          fillColor: inputField,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.0),
-                          )
-                        ),
-                        value: barbers,
-                        items: barbersname
-                          .map((e) => DropdownMenuItem(
-                            value: e,
-                            child: Text(e),
-                          ))
-                          .toList(),
-                        onChanged: (value) {
-                          setState(() {
-                            barbers = value;
-                          });
-                        }),
-                      const Padding(padding: EdgeInsets.all(10)),
-                      TextField(
-                        controller:
-                          dateinput,
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: inputField,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.0)),
-                          icon: const Icon(Icons.calendar_today),
-                          labelText: "Enter Date"
-                        ),
-                        readOnly:
-                          true,
-                        onTap: () async {
-                          DateTime? pickedDate = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(
-                              2000
+                            style: const TextStyle(
+                              fontSize: 15
                             ),
-                            lastDate: DateTime(2101)
-                          );
-                          if (pickedDate != null) {
-                            String formattedDate =
-                              DateFormat('yyyy-MM-dd').format(pickedDate);
-                            setState(() {
-                              dateinput.text = formattedDate;
-                            });
-                          }
-                        },
+                          ),
+                          const Padding(padding: EdgeInsets.all(10)),
+                        ],
                       ),
-                      const Padding(padding: EdgeInsets.all(10)),
-                      TextField(
-                        controller: hourinput,
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: inputField,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8.0)
-                          ),
-                          icon: const Icon(
-                            Icons.timelapse_outlined
-                          ),
-                          labelText: "Enter Time"
-                        ),
-                        readOnly:
-                          true,
-                        onTap: _selectTime
+                    const Text(
+                      'Barbers',
+                      style: TextStyle(
+                        color: reservationText,
+                        fontSize: 20
                       ),
-                      const Padding(padding: EdgeInsets.all(10)),
-                      SwitchListTile(
-                        title: const Text(
-                        'Extra Services',
-                          style: TextStyle(
-                            color: reservationText,
-                            fontSize: 20
+                    ),
+                    DropdownButtonFormField(
+                      dropdownColor: inputField,
+                      decoration: InputDecoration(
+                        hintText: 'Choose Barber',
+                        filled: true,
+                        fillColor: inputField,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        )
+                      ),
+                      value: barbers,
+                      items: barbersname
+                        .map((e) => DropdownMenuItem(
+                          value: e,
+                          child: Text(e),
+                        ))
+                        .toList(),
+                      onChanged: (value) {
+                        setState(() {
+                          barbers = value;
+                        });
+                      }),
+                    const Padding(padding: EdgeInsets.all(10)),
+                    TextField(
+                      controller:
+                        dateinput,
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: inputField,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0)),
+                        icon: const Icon(Icons.calendar_today),
+                        labelText: "Enter Date"
+                      ),
+                      readOnly:
+                        true,
+                      onTap: () async {
+                        DateTime? pickedDate = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(
+                            2000
                           ),
-                        ),
-                        activeTrackColor: green,
-                        activeColor: whiteText,
-                        value: extra,
-                        onChanged: (value) {
+                          lastDate: DateTime(2101)
+                        );
+                        if (pickedDate != null) {
+                          String formattedDate =
+                            DateFormat('yyyy-MM-dd').format(pickedDate);
                           setState(() {
-                            extra = value;
+                            dateinput.text = formattedDate;
                           });
                         }
+                      },
+                    ),
+                    const Padding(padding: EdgeInsets.all(10)),
+                    TextField(
+                      controller: hourinput,
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: inputField,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0)
+                        ),
+                        icon: const Icon(
+                          Icons.timelapse_outlined
+                        ),
+                        labelText: "Enter Time"
                       ),
-                      const Padding(padding: EdgeInsets.all(10)),
-                    ]
-                  ),
+                      readOnly:
+                        true,
+                      onTap: _selectTime
+                    ),
+                    const Padding(padding: EdgeInsets.all(10)),
+                    SwitchListTile(
+                      title: const Text(
+                      'Extra Services',
+                        style: TextStyle(
+                          color: reservationText,
+                          fontSize: 20
+                        ),
+                      ),
+                      activeTrackColor: green,
+                      activeColor: whiteText,
+                      value: extra,
+                      onChanged: (value) {
+                        setState(() {
+                          extra = value;
+                        });
+                      }
+                    ),
+                    const Padding(padding: EdgeInsets.all(10)),
+                  ]
                 ),
+              ),
               if (extra)
                 Container(
                   decoration: BoxDecoration(
@@ -371,9 +373,14 @@ class _ReservationScreenState extends State<ReservationScreen> {
                     horizontal: 85, vertical: 20)
                   ),
                 onPressed: () {
-                  // Route route =
-                  //     MaterialPageRoute(builder: (context) => ProfileScreen(email:textFieldController1.text,username:textFieldController2.text));
-                  // Navigator.push(context, route);
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const ScreenLayout(),
+                    ),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    buildSnackBarSuccess('Melakukan Reservasi')
+                  );
                 },
                 child: const Text(
                   'Confirm Reservation',

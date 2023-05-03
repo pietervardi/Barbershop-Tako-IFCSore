@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:barbershop_app/utils/colors.dart';
 
 class NotificationScreen extends StatefulWidget {
-  const NotificationScreen({super.key});
+  const NotificationScreen({Key? key}) : super(key: key);
 
   @override
   State<NotificationScreen> createState() => _NotificationScreenState();

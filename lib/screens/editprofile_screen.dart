@@ -75,12 +75,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   )
                 ),
                 onPressed: () {
-                  Route route = MaterialPageRoute(builder: (context) => ProfileScreen(
-                    username:textFieldController1.text,
-                    email:textFieldController2.text,
-                    )
-                  );
-                  Navigator.pushReplacement(context, route);
+                  Navigator.pop(context, {
+                    'username': textFieldController1.text,
+                    'email': textFieldController2.text,
+                  });
                 },
                 child: Text(
                   'Confirm Changes',

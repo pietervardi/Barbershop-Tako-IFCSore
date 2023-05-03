@@ -44,6 +44,7 @@ class _ScreenLayoutState extends State<ScreenLayout> {
       body: PageView(
         controller: pageController,
         onPageChanged: onPageChanged,
+        physics: const NeverScrollableScrollPhysics(),
         children: homeScreenItems,
       ),
       bottomNavigationBar: CupertinoTabBar(
