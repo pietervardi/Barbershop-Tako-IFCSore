@@ -13,6 +13,31 @@ class ReservationScreen extends StatefulWidget {
 }
 
 class _ReservationScreenState extends State<ReservationScreen> {
+  bool isLoading = false;
+
+  void _confirmReservation() {
+    setState(() {
+      isLoading = true;
+    });
+
+    Future.delayed(const Duration(seconds: 2), () {
+      setState(() {
+        isLoading = false;
+      });
+
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+          builder: (context) => const ScreenLayout(),
+        ),
+        (route) => false,
+      );
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        buildSnackBarSuccess('Melakukan Reservasi'),
+      );
+    });
+  }
+  
   TextEditingController dateinput = TextEditingController();
   TextEditingController hourinput = TextEditingController();
 
@@ -239,7 +264,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
                         );
                         if (pickedDate != null) {
                           String formattedDate =
-                            DateFormat('yyyy-MM-dd').format(pickedDate);
+                            DateFormat('EEEE, d MMM yyyy').format(pickedDate);
                           setState(() {
                             dateinput.text = formattedDate;
                           });
@@ -362,7 +387,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
                     ],
                   ),
                 ),
-              const Padding(padding: EdgeInsets.all(10)),
+              const Padding(padding: EdgeInsets.all(5)),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
@@ -372,20 +397,11 @@ class _ReservationScreenState extends State<ReservationScreen> {
                   padding: const EdgeInsets.symmetric(
                     horizontal: 85, vertical: 20)
                   ),
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const ScreenLayout(),
-                    ),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    buildSnackBarSuccess('Melakukan Reservasi')
-                  );
-                },
-                child: const Text(
-                  'Confirm Reservation',
-                  style: TextStyle(fontSize: 15),
-                )),
+                onPressed: isLoading ? null : _confirmReservation,
+                child: isLoading
+                    ? const CircularProgressIndicator()
+                    : const Text('Confirm Reservation'),
+                ),
                 const Padding(
                   padding: EdgeInsets.all(15)
                 ),

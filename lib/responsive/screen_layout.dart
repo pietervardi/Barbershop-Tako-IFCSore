@@ -51,33 +51,45 @@ class _ScreenLayoutState extends State<ScreenLayout> {
         backgroundColor: bottomBar,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.cut,
-              color: (_page == 0) ? whiteText : whiteText.withOpacity(0.5),
+            icon: Tooltip(
+              message: 'Home',
+              child: Icon(
+                Icons.cut,
+                color: (_page == 0) ? whiteText : whiteText.withOpacity(0.5),
+              ),
             ),
             label: '',
             backgroundColor: bottomBar,
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.spa,
-              color: (_page == 1) ? whiteText : whiteText.withOpacity(0.5),
+            icon: Tooltip(
+              message: 'Extra Service',
+              child: Icon(
+                Icons.spa,
+                color: (_page == 1) ? whiteText : whiteText.withOpacity(0.5),
+              ),
             ),
             label: '',
-            backgroundColor: bottomBar
+            backgroundColor: bottomBar,
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.shopping_cart,
-              color: (_page == 2) ? whiteText : whiteText.withOpacity(0.5),
+            icon: Tooltip(
+              message: 'Mini Shop',
+              child: Icon(
+                Icons.shopping_cart,
+                color: (_page == 2) ? whiteText : whiteText.withOpacity(0.5),
+              ),
             ),
             label: '',
-            backgroundColor: bottomBar
+            backgroundColor: bottomBar,
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.edit,
-              color: (_page == 3) ? whiteText : whiteText.withOpacity(0.5),
+            icon: Tooltip(
+              message: 'Reservation',
+              child: Icon(
+                Icons.edit,
+                color: (_page == 3) ? whiteText : whiteText.withOpacity(0.5),
+              ),
             ),
             label: '',
             backgroundColor: bottomBar,

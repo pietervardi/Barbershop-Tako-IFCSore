@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:barbershop_app/utils/colors.dart';
 import 'package:barbershop_app/utils/global_variable.dart';
+import 'package:barbershop_app/utils/sheets_bottom.dart';
 
 class MiniShopScreen extends StatefulWidget {
   const MiniShopScreen({Key? key}) : super(key: key);
@@ -56,14 +57,14 @@ class _MiniShopScreenState extends State<MiniShopScreen> {
                 width: 400,
                 child: GridView.count(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 16, 
-                    vertical: 20
+                    horizontal: 16,
+                    vertical: 20,
                   ),
                   shrinkWrap: true,
                   crossAxisCount: 2,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                  childAspectRatio: 0.7,
+                  crossAxisSpacing: 5,
+                  mainAxisSpacing: 5,
+                  childAspectRatio: 0.65,
                   children: List.generate(items.length, (index) {
                     return ItemCard(
                       nama: items[index]['nama'],
@@ -95,56 +96,60 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned.fill(
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: cardBackground,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 180,
-              width: 200,
-              child: ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10)
-                ),
-                child: Image.asset(
-                  gambar,
-                  fit: BoxFit.cover,
-                ),
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      color: cardBackground,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 170,
+            width: 200,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
+              ),
+              child: Image.asset(
+                gambar,
+                fit: BoxFit.cover,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 10, 
-                left: 10
-              ),
-              child: Text(
-                nama,
-                style: const TextStyle(
-                  fontSize: 11
-                ),
-              ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 10, left: 10),
+            child: Text(
+              nama,
+              style: const TextStyle(fontSize: 11),
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 5, 
-                left: 10
-              ),
-              child: Text(
-                harga,
-                style: const TextStyle(
-                  fontSize: 12, 
-                  color: priceTag
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 5, left: 10),
+            child: Text(
+              harga,
+              style: const TextStyle(fontSize: 12, color: priceTag),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              showSheetsBottom(context);
+            },
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 2, right: 10),
+                  child: Icon(
+                    Icons.more_horiz_outlined,
+                    size: 15,
+                  ),
                 ),
-              ),
-            )
-          ],
-        )
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

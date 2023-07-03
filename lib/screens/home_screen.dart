@@ -9,9 +9,10 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with AutomaticKeepAliveClientMixin<HomeScreen> {
   bool hair = true;
   bool barber = false;
+  bool showBanner = true;
 
   List<Map<String, String>> haircuts = [
     {
@@ -70,15 +71,50 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       backgroundColor: backgroundColor,
       body: SingleChildScrollView(
         child: Center(
           child: Column(
             children: [
+              if (showBanner)
+                MaterialBanner(
+                  backgroundColor: Colors.green,
+                  leading: const Icon(
+                    Icons.local_offer,
+                    color: Colors.white,
+                  ),
+                  content: const Text(
+                    '10% off for Eid Mubarak!',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500
+                    ),
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        setState(() {
+                          showBanner = false;
+                        });
+                      },
+                      child: const Text(
+                        'DISMISS',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               const SizedBox(
-                height: 15,
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -149,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               const SizedBox(
-                height: 26,
+                height: 15,
               ),
               if (hair)
                 SizedBox(
@@ -159,10 +195,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       crossAxisCount: 2,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 5,
+                      mainAxisSpacing: 5,
                       padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
+                        horizontal: 10,
+                        vertical: 15
                       ),
                       children: haircuts
                         .map((haircut) => HaircutCard(
@@ -185,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             age: barber['age']!,
                             bio: barber['bio']!,
                           ),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 10),
                         ],
                       ),
                   ],
@@ -207,17 +244,20 @@ class HaircutCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Positioned.fill(
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5),
+        side: const BorderSide(color: pictureBorder),
+      ),
       child: Stack(
         children: [
           Container(
             decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
               image: DecorationImage(
                 image: AssetImage(image),
                 fit: BoxFit.cover,
               ),
-              borderRadius: BorderRadius.circular(5),
-              border: Border.all(color: pictureBorder),
             ),
           ),
           Positioned(
@@ -229,7 +269,7 @@ class HaircutCard extends StatelessWidget {
               height: 20,
               decoration: BoxDecoration(
                 color: whiteText.withOpacity(0.5),
-                borderRadius: const BorderRadius.all(Radius.circular(20)),
+                borderRadius: BorderRadius.circular(20),
               ),
               child: Center(
                 child: Text(
@@ -265,19 +305,23 @@ class BarberCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 330,
-      height: 150,
-      decoration: BoxDecoration(
-        color: cardBackground,
+    return Card(
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: barberBorder),
+        side: const BorderSide(color: barberBorder),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(10),
-        child: Row(
-          children: [
-            Container(
+      child: Container(
+        width: 330,
+        height: 150,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: cardBackground,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(10),
+          child: Row(
+            children: [
+              Container(
                 width: 130,
                 height: 130,
                 decoration: BoxDecoration(
@@ -293,49 +337,50 @@ class BarberCard extends StatelessWidget {
                     image,
                     fit: BoxFit.cover,
                   ),
-                )),
-            const SizedBox(width: 23),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    // crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        name,
-                        style: GoogleFonts.pacifico(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(width: 23),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          name,
+                          style: GoogleFonts.pacifico(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 3),
-                      Text(
-                        '($age)',
+                        const SizedBox(width: 3),
+                        Text(
+                          '($age)',
+                          style: const TextStyle(
+                            fontSize: 11,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Flexible(
+                      child: Text(
+                        bio,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
-                          fontSize: 11,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'Times New Roman',
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  Flexible(
-                    child: Text(
-                      bio,
-                      maxLines: 3,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: 'Times New Roman',
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

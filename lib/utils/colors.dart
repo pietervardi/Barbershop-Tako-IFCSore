@@ -43,3 +43,10 @@ const logoutButton = Color(0xFFD21312);
 
 // Notification
 const notificationBorder = Color(0xFFEDA47D);
+
+// Share
+const whatsApp = Color(0xFF25D366);
+const instagram = Color(0xFFE1306C);
+const facebook = Color(0xFF4267B2);
+const telegram = Color(0xFF0088CC);
+const twitter = Color(0xFF1DA1F2);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:barbershop_app/utils/colors.dart';
-import 'package:barbershop_app/responsive/screen_layout.dart';
+import 'package:barbershop_app/screens/about_screen.dart';
 import 'package:barbershop_app/screens/register_screen.dart';
 import 'package:barbershop_app/utils/message.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -139,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         if (verify == true) {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => const ScreenLayout(),
+                              builder: (context) => const AboutScreen(),
                             ),
                           );
                           ScaffoldMessenger.of(context).showSnackBar(

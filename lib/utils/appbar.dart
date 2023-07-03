@@ -12,22 +12,25 @@ AppBar buildAppBar(BuildContext context) {
     title: Text(
       'BARBERSHOP',
       style: GoogleFonts.dancingScript(
-        fontSize: 18
+        fontSize: 18,
       ),
     ),
     actions: [
       Stack(
         alignment: Alignment.center,
         children: [
-          GestureDetector(
-            onTap: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const NotificationScreen(),
+          Tooltip(
+            message: 'Notifications',
+            child: GestureDetector(
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const NotificationScreen(),
+                ),
               ),
-            ),
-            child: const Icon(
-              Icons.notifications,
-              size: 30,
+              child: const Icon(
+                Icons.notifications,
+                size: 30,
+              ),
             ),
           ),
           Positioned(
@@ -50,27 +53,30 @@ AppBar buildAppBar(BuildContext context) {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
-      GestureDetector(
-        onTap: () => Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => const ProfileScreen(email:null ,username: null,),
+      Tooltip(
+        message: 'Profile',
+        child: GestureDetector(
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const ProfileScreen(email: null, username: null,),
+            ),
           ),
-        ),
-        child: const Padding(
-          padding: EdgeInsets.only(left: 10, right: 20),
-          child: CircleAvatar(
-            backgroundColor: gray,
-            child: Icon(
-              Icons.person,
-              color: text,
-              size: 30,
+          child: const Padding(
+            padding: EdgeInsets.only(left: 10, right: 20),
+            child: CircleAvatar(
+              backgroundColor: gray,
+              child: Icon(
+                Icons.person,
+                color: text,
+                size: 30,
+              ),
             ),
           ),
         ),
-      )
+      ),
     ],
   );
 }
