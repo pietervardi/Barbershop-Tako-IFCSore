@@ -56,6 +56,7 @@ class _MiniShopScreenState extends State<MiniShopScreen> {
               SizedBox(
                 width: 400,
                 child: GridView.count(
+                  physics: const NeverScrollableScrollPhysics(),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 16,
                     vertical: 20,
@@ -64,7 +65,7 @@ class _MiniShopScreenState extends State<MiniShopScreen> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 5,
                   mainAxisSpacing: 5,
-                  childAspectRatio: 0.65,
+                  childAspectRatio: 0.72,
                   children: List.generate(items.length, (index) {
                     return ItemCard(
                       nama: items[index]['nama'],

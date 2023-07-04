@@ -107,7 +107,7 @@ class _AboutScreenState extends State<AboutScreen> {
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(
-                            vertical: 12,
+                            vertical: 10,
                             horizontal: 75
                           ),
                           child: const Text(

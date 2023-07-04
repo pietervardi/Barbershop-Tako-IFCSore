@@ -23,6 +23,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: SizedBox(
             width: 340,
             child: Column(children: [
+              const SizedBox(height: 25,),
               Image.asset(
                 'assets/logo.png',
                 width: 251,

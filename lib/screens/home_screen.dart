@@ -244,50 +244,71 @@ class HaircutCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5),
-        side: const BorderSide(color: pictureBorder),
-      ),
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              image: DecorationImage(
-                image: AssetImage(image),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 2,
-            right: 2,
+    return GestureDetector(
+      onTap: () {
+        showDialog(
+          context: context,
+          builder: (context) => Dialog(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
-              width: 73,
-              height: 20,
+              width: 300,
+              height: 300,
               decoration: BoxDecoration(
-                color: whiteText.withOpacity(0.5),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Center(
-                child: Text(
-                  name,
-                  style: GoogleFonts.roboto(
-                    fontSize: 10,
-                    color: whiteText,
-                    fontWeight: FontWeight.bold,
-                  ),
+                borderRadius: BorderRadius.circular(5),
+                image: DecorationImage(
+                  image: AssetImage(image),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
           ),
-        ],
+        );
+      },
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5),
+          side: const BorderSide(color: pictureBorder),
+        ),
+        child: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                image: DecorationImage(
+                  image: AssetImage(image),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 2,
+              right: 2,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 4),
+                width: 73,
+                height: 20,
+                decoration: BoxDecoration(
+                  color: whiteText.withOpacity(0.5),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Center(
+                  child: Text(
+                    name,
+                    style: GoogleFonts.roboto(
+                      fontSize: 10,
+                      color: whiteText,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
+
 
 class BarberCard extends StatelessWidget {
   final String name;

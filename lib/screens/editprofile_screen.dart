@@ -69,7 +69,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ),
                   backgroundColor: editButton,
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 85, 
+                    horizontal: 80, 
                     vertical: 20
                   )
                 ),

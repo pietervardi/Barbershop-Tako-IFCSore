@@ -27,7 +27,7 @@ void showSheetsBottom(BuildContext context) {
                 ),
               ),
               title: const Text(
-                'Bagikan ke teman kamu',
+                'Share to your friends',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 17,
